@@ -106,49 +106,44 @@
         .tap-text { font-size: 0.9rem; color: var(--primary); margin-top: 15px; animation: bounce 1.5s infinite; font-weight: 500; z-index: 11; position: relative; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
-        /* --- Gift Boxes (จัดวาง 2 บน 2 ล่าง แบบสลับฟันปลา) --- */
+        /* --- Gift Boxes (ปรับแต่งการจัดวางแบบ Grid ให้เรียบร้อยสวยงาม) --- */
         .boxes-grid { 
             display: grid; 
-            grid-template-columns: repeat(2, 90px); 
-            gap: 20px 40px; 
+            grid-template-columns: repeat(2, 100px); 
+            gap: 25px; 
             justify-content: center; 
             align-items: center; 
+            justify-items: center;
             margin: 0 auto; 
         }
         
         .gift-box { 
             font-size: 65px; 
             cursor: pointer; 
-            display: inline-block; 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.12)); 
             animation: entice-shake 1.2s ease-in-out infinite; 
             transition: transform 0.2s; 
             text-align: center;
+            -webkit-tap-highlight-color: transparent;
         }
-        
-        /* สลับฟันปลาด้วยการเหลื่อมตำแหน่งแนวตั้ง */
-        .gift-box:nth-child(1) { transform: translateY(-12px); }
-        .gift-box:nth-child(2) { transform: translateY(12px); }
-        .gift-box:nth-child(3) { transform: translateY(12px); }
-        .gift-box:nth-child(4) { transform: translateY(-12px); }
 
         .gift-box:active { transform: scale(0.85); animation: none; }
         
         @keyframes entice-shake { 
-            0%, 100% { transform: translateY(var(--offset-y, 0px)) scale(1) rotate(0deg); } 
-            15% { transform: translateY(calc(var(--offset-y, 0px) - 10px)) scale(1.12) rotate(-8deg); } 
-            30% { transform: translateY(var(--offset-y, 0px)) scale(0.95) rotate(8deg); } 
-            45% { transform: translateY(calc(var(--offset-y, 0px) - 12px)) scale(1.15) rotate(-10deg); } 
-            60% { transform: translateY(var(--offset-y, 0px)) scale(1.05) rotate(6deg); } 
-            75% { transform: translateY(calc(var(--offset-y, 0px) - 5px)) scale(1) rotate(-4deg); } 
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); } 
+            15% { transform: translateY(-8px) scale(1.1) rotate(-6deg); } 
+            30% { transform: translateY(0) scale(0.95) rotate(6deg); } 
+            45% { transform: translateY(-10px) scale(1.12) rotate(-8deg); } 
+            60% { transform: translateY(0) scale(1.05) rotate(5deg); } 
+            75% { transform: translateY(-4px) scale(1) rotate(-3deg); } 
         }
-
-        .gift-box:nth-child(1) { --offset-y: -12px; }
-        .gift-box:nth-child(2) { --offset-y: 12px; }
-        .gift-box:nth-child(3) { --offset-y: 12px; }
-        .gift-box:nth-child(4) { --offset-y: -12px; }
         
-        /* ปรับอนิเมชันสั่นแรงตื่นเต้นมากยิ่งขึ้น ตอนถูกกดเปิด */
+        /* อนิเมชันสั่นแรงตื่นเต้นเมื่อถูกเลือก */
         .box-selected-shake { animation: box-selected-shake 0.8s ease-in-out !important; }
         @keyframes box-selected-shake { 
             0% { transform: scale(1) rotate(0deg); } 
